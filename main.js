@@ -13,7 +13,7 @@ const mockUpStrand = () => {
   return newStrand;
 };
 
-/*factory function that returns an object*/
+//factory function that returns an object
 const pAequorFactory =(n, arr)=>
 {
   return{
@@ -23,27 +23,27 @@ const pAequorFactory =(n, arr)=>
 
 
 
-    /*mutate method*/
+    //mutate method
     mutate(){
 
-      /*pick randomly a base from dna*/
+      //pick randomly a base from dna
       let i = Math.floor(Math.random()*15);
       let oldBase = this.dna[i];
 
-      /*pick ranomly a new base*/
+      //pick ranomly a new base
       let newBase = returnRandBase();
       /*console.log(i);
       console.log(oldBase);
       console.log(newBase);*/
 
-      /*if new base is not the same as old base, replace old base for new base in dna and return new dna*/
+      //if new base is not the same as old base, replace old base for new base in dna and return new dna
       if(newBase !== oldBase){
         oldBase = newBase;
         this.dna.splice(i, 1, oldBase);
         return this.dna;
       }
 
-      /* if new base is the same as old base, start mutate () again*/
+      //if new base is the same as old base, start mutate () again
       else{
         this.mutate();
         return this.dna;
@@ -53,19 +53,19 @@ const pAequorFactory =(n, arr)=>
 
 
 
-      /*compare method*/
+      //compare method
       compareDNA (pAequor2){
         
-        /* get current pAequor's dna*/
+        //get current pAequor's dna
         let currentDNA = this.dna;
 
-        /*get new pAequor's dna*/
+        //get new pAequor's dna
         let newDNA = pAequor2.dna;
 
         /*console.log(currentDNA);
         console.log(newDNA);*/
 
-        /*Create common strang and push common bases inside*/
+        //Create common strang and push common bases inside
          let commonStrang = [];
         for (let i=0; i<currentDNA.length; i++){
           if (currentDNA[i]===newDNA[i]){
@@ -74,16 +74,16 @@ const pAequorFactory =(n, arr)=>
           }}
           /*console.log(commonStrang);*/
 
-          /* get length of commonStrang*/
+          //get length of commonStrang
           let l=commonStrang.length;
 
-          /*calculate percentage*/
+          //calculate percentage
           let a = (l/currentDNA.length)*100;
 
-          /*round*/
+          //round
           let p=a.toFixed(0);
 
-        /* get specimen Numbers*/
+        //get specimen Numbers
           let specimen1=this.specimenNum;
           let specimen2=pAequor2.specimenNum;
 
@@ -91,35 +91,35 @@ const pAequorFactory =(n, arr)=>
           console.log(a);
           console.log(p)*/
           
-          /*return message*/
+          //eturn message
           return console.log(`Specimen #${specimen1} and specimen #${specimen2} have ${p}% DNA in common.`);
         },
 
 
 
-        /*willLikelySurvive method*/
+        //willLikelySurvive method
           willLikelySurvive(){
 
-            /*get object's DNA*/
+            //get object's DNA
             let dnaToTest = this.dna;
             /*console.log(dnaToTest);*/
 
-            /* get a strang with all C and G bases*/
+            //get a strang with all C and G bases
             let cOrGStrang = [];
             for (let i=0; i<dnaToTest.length; i++){
               if(dnaToTest[i] ==='C' || dnaToTest[i] ==='G'){
                 cOrGStrang.push(dnaToTest[i]);
               }
             }
-            /*console.log(cOrGStrang);*/
-            /*get length of CorG strang and calculate percentage*/
+            //console.log(cOrGStrang);
+            //get length of CorG strang and calculate percentage
             let lCOrG = cOrGStrang.length;
             /*console.log(lCOrG);*/
             let percentCOrG = lCOrG / dnaToTest.length *100;
             let finalpercentCOrG = percentCOrG.toFixed(0);
             /*console.log(finalpercentCOrG);*/
 
-            /*return true if percent is at least 60%*/
+            //return true if percent is at least 60%
             if (finalpercentCOrG >= 60){
               return true;
             }
@@ -145,9 +145,11 @@ pAequor1.compareDNA(pAequor2);*/
 console.log(pAequor1.willLikelySurvive());*/
 
 
-/*Create 30 instances that can survive*/
-
+//Create 30 instances that can survive
+// create empty array
 let thirtypAequors = [];
+
+// keep filling empty array with pAequors who survive as long as array length is under 30
 let i = 1;
 while (thirtypAequors.length <30){
 if (pAequorFactory(i, mockUpStrand()).willLikelySurvive()){

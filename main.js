@@ -19,9 +19,8 @@ const pAequorFactory =(n, arr)=>
   return{
 
     specimenNum: n,
+    
     dna: arr,
-
-
 
     //mutate method
     mutate(){
@@ -32,10 +31,7 @@ const pAequorFactory =(n, arr)=>
 
       //pick ranomly a new base
       let newBase = returnRandBase();
-      /*console.log(i);
-      console.log(oldBase);
-      console.log(newBase);*/
-
+      
       //if new base is not the same as old base, replace old base for new base in dna and return new dna
       if(newBase !== oldBase){
         oldBase = newBase;
@@ -47,10 +43,8 @@ const pAequorFactory =(n, arr)=>
       else{
         this.mutate();
         return this.dna;
-    
       }
       },
-
 
 
       //compare method
@@ -62,9 +56,6 @@ const pAequorFactory =(n, arr)=>
         //get new pAequor's dna
         let newDNA = pAequor2.dna;
 
-        /*console.log(currentDNA);
-        console.log(newDNA);*/
-
         //Create common strang and push common bases inside
          let commonStrang = [];
         for (let i=0; i<currentDNA.length; i++){
@@ -72,8 +63,7 @@ const pAequorFactory =(n, arr)=>
             let commenBase=currentDNA[i];
             commonStrang.push(currentDNA[i]);
           }}
-          /*console.log(commonStrang);*/
-
+        
           //get length of commonStrang
           let l=commonStrang.length;
 
@@ -87,23 +77,17 @@ const pAequorFactory =(n, arr)=>
           let specimen1=this.specimenNum;
           let specimen2=pAequor2.specimenNum;
 
-          /*console.log(l);
-          console.log(a);
-          console.log(p)*/
           
-          //eturn message
+          //return message
           return console.log(`Specimen #${specimen1} and specimen #${specimen2} have ${p}% DNA in common.`);
         },
-
-
 
         //willLikelySurvive method
           willLikelySurvive(){
 
             //get object's DNA
             let dnaToTest = this.dna;
-            /*console.log(dnaToTest);*/
-
+            
             //get a strang with all C and G bases
             let cOrGStrang = [];
             for (let i=0; i<dnaToTest.length; i++){
@@ -111,14 +95,12 @@ const pAequorFactory =(n, arr)=>
                 cOrGStrang.push(dnaToTest[i]);
               }
             }
-            //console.log(cOrGStrang);
+           
             //get length of CorG strang and calculate percentage
             let lCOrG = cOrGStrang.length;
-            /*console.log(lCOrG);*/
             let percentCOrG = lCOrG / dnaToTest.length *100;
             let finalpercentCOrG = percentCOrG.toFixed(0);
-            /*console.log(finalpercentCOrG);*/
-
+            
             //return true if percent is at least 60%
             if (finalpercentCOrG >= 60){
               return true;
@@ -126,7 +108,6 @@ const pAequorFactory =(n, arr)=>
             else{
               return false;
             }
-
           }
         }
       }
